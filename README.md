@@ -2,6 +2,8 @@
 
 VSCode 💡 for coc.nvim. Inspired by [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 
+![GIF](https://user-images.githubusercontent.com/47070852/128601281-c322901c-2198-4595-9e35-dff3d10369fc.gif)
+
 ## Introduction
 
 The plugin shows a lightbulb in the sign column whenever a textDocument/codeAction is available at the current cursor position.
