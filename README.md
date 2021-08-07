@@ -16,6 +16,8 @@ All available options by default
 require('coc-lightbulb').setup {
   -- enable this plugin
   enable = true,
+  -- Disable this plugin in these filetypes. As some servers provide code actions everywhere...
+  disabled_filetyps = {},
   sign = {
     enabled = true,
     -- Priority of the sign

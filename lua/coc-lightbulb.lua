@@ -14,6 +14,7 @@ end
 
 local opts = {
   enable = true,
+  disabled_filetyps = {},
   sign = {
     enabled = true,
     priority = 10,
@@ -32,6 +33,9 @@ function M.setup(user_opts)
   user_opts = user_opts or {}
   if user_opts.enable ~= nil then
     opts.enable = user_opts.enable
+  end
+  if user_opts.disabled_filetyps then
+    opts.disabled_filetyps = user_opts.disabled_filetyps
   end
   for option, value in pairs(user_opts.sign or {}) do
     opts.sign[option] = value
@@ -101,6 +105,7 @@ function M.refresh()
     not (
       opts.enable
       and vim.bo.buflisted
+      and not vim.tbl_contains(opts.disabled_filetyps, vim.bo.filetype)
       and fn.exists '*CocHasProvider' == 1
       and fn.CocHasProvider 'codeAction'
     )
