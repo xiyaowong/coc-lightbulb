@@ -37,11 +37,11 @@ local opts = {
 
 function M.setup(user_opts)
   user_opts = user_opts or {}
-  for _, option in ipairs(user_opts) do
+  for option, value in pairs(user_opts) do
     if vim.tbl_contains({ 'sign', 'virtual_text', 'status_text', 'float' }, option) then
-      opts[option] = vim.tbl_extend('force', opts[option], user_opts[option])
+      opts[option] = vim.tbl_extend('force', opts[option], value)
     else
-      opts[option] = user_opts[option]
+      opts[option] = value
     end
   end
 end
