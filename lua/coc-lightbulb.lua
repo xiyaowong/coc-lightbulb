@@ -113,11 +113,10 @@ local function update_float(ctx)
   local cur_col = fn.col '.'
   local end_col = fn.col '$'
   local f_row = 0
-  local f_col = 3
-  if api.nvim_get_current_line():find '  ' == 1 then
+  -- place the end of line by default
+  local f_col = end_col - cur_col + 3
+  if end_col > 2 * cur_col and api.nvim_get_current_line():find '  ' == 1 then
     f_col = -cur_col + 1
-  else
-    f_col = end_col - cur_col + 3
   end
 
   local f_winnr = api.nvim_open_win(f_bufnr, false, {
