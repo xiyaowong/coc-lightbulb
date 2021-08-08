@@ -33,9 +33,14 @@ require('coc-lightbulb').setup {
     -- text to show
     text = '💡',
   },
+  float = { -- Tips: you can click the float window to run CocAction
+    enabled = false,
+    text = '💡',
+  },
 }
 ```
 
 - sign name: `LightBulbSign`
 - virtual text highlight: `LightBulbVirtualText`
 - statusline integration: `b:lightbulb_status_text` or `require'coc-lightbulb'.get_status()`
+- float window highlight: `LightBulbFloatWin`
