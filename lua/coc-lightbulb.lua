@@ -110,8 +110,15 @@ local function update_float(ctx)
   vim.bo[f_bufnr].filetype = 'coc_lightbulb'
 
   -- TODO: find the best position to show
+  local cur_col = fn.col '.'
+  local end_col = fn.col '$'
   local f_row = 0
-  local f_col = fn.col '$' - fn.col '.' + 3
+  local f_col = 3
+  if api.nvim_get_current_line():find '  ' == 1 then
+    f_col = -cur_col + 1
+  else
+    f_col = end_col - cur_col + 3
+  end
 
   local f_winnr = api.nvim_open_win(f_bufnr, false, {
     width = #opts.float.text,
