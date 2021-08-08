@@ -104,9 +104,9 @@ function M.refresh()
   if
     not (
       opts.enable
+      and vim.g.coc_service_initialized == 1
       and vim.bo.buflisted
       and not vim.tbl_contains(opts.disabled_filetyps, vim.bo.filetype)
-      and fn.exists '*CocHasProvider' == 1
       and fn.CocHasProvider 'codeAction'
     )
   then
