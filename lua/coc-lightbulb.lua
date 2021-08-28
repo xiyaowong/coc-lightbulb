@@ -179,18 +179,19 @@ function M.refresh()
     return
   end
 
-  local actions = fn.CocAction('codeActions', 'cursor')
-  local ctx = {
-    show = type(actions) == 'table' and #actions > 0,
-    lnum = fn.line '.',
-    bufnr = api.nvim_get_current_buf(),
-    winnr = api.nvim_get_current_win(),
-  }
+  fn.CocActionAsync('codeActions', 'cursor', function(_, actions)
+    local ctx = {
+      show = type(actions) == 'table' and #actions > 0,
+      lnum = fn.line '.',
+      bufnr = api.nvim_get_current_buf(),
+      winnr = api.nvim_get_current_win(),
+    }
 
-  update_sign(ctx)
-  update_virtual_text(ctx)
-  update_status_text(ctx)
-  update_float(ctx)
+    update_sign(ctx)
+    update_virtual_text(ctx)
+    update_status_text(ctx)
+    update_float(ctx)
+  end)
 end
 
 return M
