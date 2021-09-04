@@ -4,6 +4,12 @@ VSCode 💡 for coc.nvim. Inspired by [nvim-lightbulb](https://github.com/kosayo
 
 ![GIF](https://user-images.githubusercontent.com/47070852/128601281-c322901c-2198-4595-9e35-dff3d10369fc.gif)
 
+**You can use extension [coc-lightbulb](https://github.com/xiyaowong/coc-lightbulb-) instead of this plugin**
+
+## Requirements
+
+neovim 0.5+
+
 ## Introduction
 
 The plugin shows a lightbulb in the sign column whenever a textDocument/codeAction is available at the current cursor position.
@@ -34,6 +40,7 @@ require('coc-lightbulb').setup {
     text = '💡',
   },
   float = { -- Tips: you can click the float window to run CocAction
+    -- The diagnostic window may be broken
     enabled = false,
     text = '💡',
   },
